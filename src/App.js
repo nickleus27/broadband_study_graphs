@@ -6,31 +6,40 @@ import { processData } from './library/getCSV';
 import round14 from './assets/round14.csv';
 import round15 from './assets/round15.csv';
 
-const testData = {};
+const graphData = {};
+const rounds = ["Round 14", "Round 15", "Round 16"];
+const csvRounds = [round14, round15];
+
+function createButtons(rounds) {
+  var buttons = [];
+  var year = 20;
+  for (const round of rounds) {
+    buttons.push(<OptionItem name={round} description={"Broadband testing for the year 20" + year}
+      choice={"Go To " + round}></OptionItem>);
+    year++;
+  }
+  return buttons;
+}
+
+function createGraphData(graphData, rounds, csvRounds) {
+  /* we do not have data for round 16 yet */
+  for (let i = 0; i < csvRounds.length; i++) {
+    fetch(csvRounds[i])
+      .then((csv) => csv.text())
+      .then(text => {
+        graphData[rounds[i]] = processData(text);
+      });
+  }
+}
 
 function App() {
-  fetch(round14)
-    .then((r) => r.text())
-    .then(text => {
-      testData["round14"] = processData(text);
-    })
-    fetch(round15)
-    .then((r) => r.text())
-    .then(text => {
-      testData["round15"] = processData(text);
-      console.log();
-    })
+  createGraphData(graphData, rounds, csvRounds);
   return (
     <div className="App">
       <header className="App-header">
         <h2>California Broadband Study</h2>
         <img src={logo} className="App-logo" alt="logo" />
-        <OptionItem name={"Round 14"} description={"Broadband testing for the year 2020"}
-          choice={"Go To Round 14"}></OptionItem>
-        <OptionItem name={"Round 15"} description={"Broadband testing for the year 2021"}
-          choice={"Go To Round 15"}></OptionItem>
-        <OptionItem name={"Round 16"} description={"Broadband testing for the year 2022"}
-          choice={"Go To Round 16"}></OptionItem>
+        {createButtons(rounds)}
       </header>
     </div>
   );
