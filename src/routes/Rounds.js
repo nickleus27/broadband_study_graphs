@@ -8,16 +8,17 @@ import React from 'react';
 function createButtons() {
   var buttons = [];
   var year = 20;
-  for (const key of Object.keys(graphData)) {
+  for (const rounds of Object.keys(graphData)) {
     var buttonData = {};
     buttonData.route = "/carriers";
-    buttonData.data = graphData[key];
+    buttonData.data = graphData[rounds];
+    buttonData.title = rounds;
     buttons.push(
-      <OptionItem key={key}
-        name={key}
+      <OptionItem key={rounds}
+        name={rounds}
         description={"Broadband testing for the year 20" + year}
         data={buttonData}
-        choice={"Go To " + key}>
+        choice={"Go To " + rounds}>
       </OptionItem>);
     year++;
   }

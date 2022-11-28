@@ -7,29 +7,29 @@ import { useLocation } from 'react-router-dom';
 
 function createButtons(props) {
   var buttons = [];
-  for (const carrier of Object.keys(props.data)) {
+  for (const phone_model of Object.keys(props.data)) {
     let buttonData = {};
-    buttonData.route = "/phone_models";
-    buttonData.data = props.data[carrier];
-    buttonData.title = carrier;
+    buttonData.route = "/servers";
+    buttonData.data = props.data[phone_model];
+    buttonData.title = phone_model;
     buttons.push(
       <OptionItem
-        key={carrier}
-        name={carrier}
-        description={"Broadband testing for " + carrier}
+        key={phone_model}
+        name={phone_model}
+        description={"Broadband testing for " + phone_model}
         data={buttonData}
-        choice={"Go To " + carrier}>
+        choice={"Go To " + phone_model}>
       </OptionItem>);
   }
   return buttons;
 }
 
-function Carriers() {
+function PhoneModels() {
   const location = useLocation();
   return (
     <div className="App">
       <header className="App-header">
-        <h2>California Broadband {location.state.title} Carriers</h2>
+        <h2>California Broadband {location.state.title} Phone Models</h2>
         <img src={logo} className="App-logo" alt="logo" />
         {createButtons(location.state)}
       </header>
@@ -38,4 +38,4 @@ function Carriers() {
 
 }
 
-export default Carriers;
+export default PhoneModels;

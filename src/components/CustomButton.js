@@ -8,6 +8,7 @@ const CustomButton = (props) => {
         className="option-choice__button"
         to={props.data.route}
         state={{
+          title: props.data.title,
           data: props.data.data
         }}>
         {props.choice}

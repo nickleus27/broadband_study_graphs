@@ -9,7 +9,7 @@ function OptionItem(props) {
             <h2>{props.description}</h2>
         </div>
         <div>
-            <CustomButton route={props.route} data={props.data} choice={props.choice}></CustomButton>
+            <CustomButton route={props.route} title={props.title} data={props.data} choice={props.choice}></CustomButton>
         </div>
     </div>
     );

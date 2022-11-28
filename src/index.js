@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import About from './routes/About';
 import Rounds from './routes/Rounds';
 import Carriers from './routes/Carriers';
+import PhoneModels from './routes/PhoneModels';
+import Servers from './routes/Servers';
 import {
   BrowserRouter,
   Routes,
@@ -20,6 +22,8 @@ root.render(
       <Route path="rounds" element={<Rounds />} />
       <Route path="about" element={<About />} />
       <Route path="carriers" element={<Carriers />} />
+      <Route path="phone_models" element={<PhoneModels />} />
+      <Route path="servers" element={<Servers />} />
     </Routes>
   </BrowserRouter>
 );
