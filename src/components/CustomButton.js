@@ -1,9 +1,18 @@
+import { Link } from 'react-router-dom';
 import './CustomButton.css';
 
-function CustomButton(props) {
+const CustomButton = (props) => {
   return (
-     <div className = "option-choice__button"
-     onClick={() => alert("You clicked on the button!")}>{props.choice}</div>
+    <nav>
+      <Link
+        className="option-choice__button"
+        to={props.data.route}
+        state={{
+          data: props.data.data
+        }}>
+        {props.choice}
+      </Link>
+    </nav>
   );
 }
 
