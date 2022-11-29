@@ -10,18 +10,21 @@ function createButtons(props) {
   for (const server of Object.keys(props.data)) {
     let buttonData = {};
     var description;
-    //buttonData.route = data.route+"phone_manufacturers";
+    buttonData.route = "/graph";
     buttonData.data = props.data[server];
     buttonData.title = server;
-    if (server.includes("up1")) {
+    if (server.includes("total")) {
+        continue;
+    }
+    if (server.includes("up")) {
         description = "Upload speeds from ";
     } else {
         description = "Download speeds from ";
     }
-    if(server.includes("w")) {
+    if(server.includes("wTCP")) {
         description += "West Server";
     } else {
-        description+= "East Server";
+        description += "East Server";
     }
     buttons.push(
       <OptionItem

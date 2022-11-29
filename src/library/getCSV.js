@@ -1,42 +1,19 @@
+/**
+ * Nick Anderson
+ * November 28, 2022
+ * Function for converting CSV data to a javascript object
+ * A global variable for storing the data
+ */
+
+//global data object
 var graphData = {};
 
-function loadFileCB() {
-    graphData = processData(this.responseText);
-    // hard codes string parameters for test
-    // need to pass these values in from a button click
-    //GRAPHDATA = getVendorModelServerGraph("FirstNet", "XP8800", "wTCPup1");
-
-    /*
-    new Chart(
-    document.getElementById('visualizer'),
-    {
-        type: 'bar',
-        data: {
-        labels: GRAPHDATA.map( row => row.test),
-        datasets: [
-            {
-            label: 'Tests',
-            data: GRAPHDATA.map(row => row.value)
-            }
-        ]
-        }
-    }
-    );
-    */
-}
-
-function getVendorModelServerGraph(vendor, model, server) {
-    var tests = ["200M+", "100M-200M", "50M-100M", "10M-50M", "0M-10M", "timeout", "no effective service", "connect_error2", "bad_output", "unknown_error"];
-    var collection = JSON[vendor][model][server];
-    var data = [];
-    for (const test of tests) {
-        data.push({ test: test, value: parseInt(collection[test]) });
-    }
-    //maxGraphValue = collection["total tests"];
-    return data;
-}
-
-//snippet from https://stackoverflow.com/questions/7431268/how-to-read-data-from-csv-file-using-javascript#:~:text=function%20processData(allText)%20%7B%0A%20%20%20%20var%20allTextLines,push(tarr)%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%20%20//%20alert(lines)%3B%0A%7D-->
+//snippet from https://stackoverflow.com/questions/7431268/how-to-read-data-from-csv-file-using-javascript#:~:text=function%20processData(allText)%20%7B%0A%20%20%20%20var%20allTextLines,push(tarr)%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%20%20//%20alert(lines)%3B%0A%7D
+//first few lines for splitting the csv in javascript were take from stackoverflow
+/**
+ * @param {csv string} allText 
+ * @returns javascript object
+ */
 function processData(allText) {
     var allTextLines = allText.split(/\r\n|\n/);
     var headers = allTextLines[0].split(',');

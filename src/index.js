@@ -8,6 +8,7 @@ import Rounds from './routes/Rounds';
 import Carriers from './routes/Carriers';
 import PhoneModels from './routes/PhoneModels';
 import Servers from './routes/Servers';
+import Graph from './routes/Graph';
 import {
   BrowserRouter,
   Routes,
@@ -24,6 +25,7 @@ root.render(
       <Route path="carriers" element={<Carriers />} />
       <Route path="phone_models" element={<PhoneModels />} />
       <Route path="servers" element={<Servers />} />
+      <Route path="graph" element={<Graph />} />
     </Routes>
   </BrowserRouter>
 );
