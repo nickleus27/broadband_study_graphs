@@ -7,7 +7,7 @@
  * Converts test data to the format need for the graph
  * 
  * @param {*} testData 
- * @returns 
+ * @returns an array of graph data objects with keys: name, value, and totalTests
  */
 
 function getCarrierModelServerGraph(testData) {
@@ -16,9 +16,8 @@ function getCarrierModelServerGraph(testData) {
         if (key.includes("total")) {
             continue;
         }
-        graph.push({ name: key, value: parseInt(testData[key]) });
+        graph.push({ name: key, value: parseInt(testData[key]), totalTests: parseInt(testData["total tests"])});
     }
-    //maxGraphValue = collection["total tests"];
     return graph;
 }
 
