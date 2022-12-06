@@ -1,4 +1,4 @@
-import logo from '../seal.png';
+import logo from '../calspeed.png';
 import '../App.css';
 import '../components/OptionItem.css';
 import OptionItem from '../components/OptionItem.js';
@@ -7,12 +7,14 @@ import { useLocation } from 'react-router-dom';
 
 function createButtons(props) {
   var buttons = [];
-  for (const server of Object.keys(props.data)) {
+  var servers = props.data[props.title.rounds][props.title.carrier][props.title.phone_model];
+  for (const server of Object.keys(servers)) {
     let buttonData = {};
     var description;
     buttonData.route = "/graph";
-    buttonData.data = props.data[server];
-    buttonData.title = server;
+    buttonData.data = props.data;
+    buttonData.title = Object.assign({}, props.title);
+    buttonData.title.server = server;
     if (server.includes("total")) {
         continue;
     }
@@ -26,6 +28,7 @@ function createButtons(props) {
     } else {
         description += "East Server";
     }
+    buttonData.title.description = description;
     buttons.push(
       <OptionItem
         key={server}
@@ -43,7 +46,7 @@ function Servers() {
   return (
     <div className="App">
       <header className="App-header">
-        <h2>California Broadband Server Tests for Phone Model {location.state.title}</h2>
+        <h2>Server Tests for: Carrier {location.state.title.carrier} Phone Model {location.state.title.phone_model}</h2>
         <img src={logo} className="App-logo" alt="logo" />
         {createButtons(location.state)}
       </header>

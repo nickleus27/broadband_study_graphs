@@ -1,4 +1,4 @@
-import logo from './seal.png';
+import logo from './calspeed.png';
 import './components/CustomButton.css';
 import './App.css';
 import { Outlet, Link } from "react-router-dom";

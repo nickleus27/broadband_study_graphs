@@ -1,4 +1,4 @@
-import logo from '../seal.png';
+import logo from '../calspeed.png';
 import '../App.css';
 import '../components/OptionItem.css';
 import OptionItem from '../components/OptionItem.js';
@@ -11,8 +11,8 @@ function createButtons() {
   for (const rounds of Object.keys(graphData)) {
     var buttonData = {};
     buttonData.route = "/carriers";
-    buttonData.data = graphData[rounds];
-    buttonData.title = rounds;
+    buttonData.data = graphData;//[rounds];
+    buttonData.title = {rounds};
     buttons.push(
       <OptionItem key={rounds}
         name={rounds}
