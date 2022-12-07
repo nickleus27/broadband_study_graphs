@@ -54,8 +54,10 @@ function Graph() {
                         </BarChart>
                     </ResponsiveContainer>
                 </div>
+                {/*
                 Choose another test to compare:
                 {createButtons(location.state)}
+                    */}
             </header>
         </div>
     );
