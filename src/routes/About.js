@@ -3,14 +3,13 @@ function About() {
     return (
       <>
         <main>
-          <h2>Who are we?</h2>
+          <h2>Under construction</h2>
           <p>
-            That feels like an existential question, don't you
-            think?
+            Work in progress...
           </p>
         </main>
         <nav>
-          <Link to="/">Home</Link>
+          <Link to="/broadband_study_graphs">Home</Link>
         </nav>
       </>
     );

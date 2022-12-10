@@ -34,7 +34,7 @@ function App() {
         <h2>California Broadband Study</h2>
         <img src={logo} className="App-logo" alt="logo" />
         <nav>
-          <Link className="option-choice__button" to="/">Home</Link> |{" "}
+          <Link className="option-choice__button" to="/broadband_study_graphs">Home</Link> |{" "}
           <Link className="option-choice__button" to="/rounds">Yearly Testing Results</Link> | {" "}
           <Link className="option-choice__button" to="/about">About</Link>
         </nav>

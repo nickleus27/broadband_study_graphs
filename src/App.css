@@ -18,6 +18,42 @@
   color: white;
 }
 
+.Radio-col {
+  margin: auto;
+  text-align: left;
+  left: 0px;
+  width: 200px;
+  border: 3px solid red;
+  padding: 10px;
+  background-color: #282c34;
+  font-size: calc(10px + 2vmin);
+  color: #D4AF37;
+}
+
+/*
+.Radio-col-left {
+  float: left;
+  margin-right: 8px;
+  text-align: left;
+  width: 200px;
+  border: 3px solid red;
+  padding: 10px;
+  background-color: #282c34;
+  font-size: calc(10px + 2vmin);
+  color: #D4AF37;
+}
+
+.Radio-col-right {
+  margin-left: 108px;
+  text-align: left;
+  width: 200px;
+  border: 3px solid red;
+  background-color: #282c34;
+  font-size: calc(10px + 2vmin);
+  color: #D4AF37;
+}
+*/
+
 .App-link {
   color: #61dafb;
 }

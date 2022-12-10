@@ -10,7 +10,7 @@ function createButtons() {
   var year = 20;
   for (const rounds of Object.keys(graphData)) {
     var buttonData = {};
-    buttonData.route = "/carriers";
+    buttonData.route = "/test_options";
     buttonData.data = graphData;//[rounds];
     buttonData.title = {rounds};
     buttons.push(
