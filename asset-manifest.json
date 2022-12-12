@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/broadband_study_graphs/static/css/main.3850bb56.css",
-    "main.js": "/broadband_study_graphs/static/js/main.47a37e92.js",
+    "main.css": "/broadband_study_graphs/static/css/main.e0806ce4.css",
+    "main.js": "/broadband_study_graphs/static/js/main.dcac9209.js",
     "static/js/787.ee06bf17.chunk.js": "/broadband_study_graphs/static/js/787.ee06bf17.chunk.js",
     "static/media/calspeed.png": "/broadband_study_graphs/static/media/calspeed.12f2e0812278d615938e.png",
     "static/media/round14.csv": "/broadband_study_graphs/static/media/round14.dacd4d1d1cb01b77268e.csv",
     "static/media/round15.csv": "/broadband_study_graphs/static/media/round15.04e6400995071e03fb93.csv",
     "index.html": "/broadband_study_graphs/index.html",
-    "main.3850bb56.css.map": "/broadband_study_graphs/static/css/main.3850bb56.css.map",
-    "main.47a37e92.js.map": "/broadband_study_graphs/static/js/main.47a37e92.js.map",
+    "main.e0806ce4.css.map": "/broadband_study_graphs/static/css/main.e0806ce4.css.map",
+    "main.dcac9209.js.map": "/broadband_study_graphs/static/js/main.dcac9209.js.map",
     "787.ee06bf17.chunk.js.map": "/broadband_study_graphs/static/js/787.ee06bf17.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3850bb56.css",
-    "static/js/main.47a37e92.js"
+    "static/css/main.e0806ce4.css",
+    "static/js/main.dcac9209.js"
   ]
 }
