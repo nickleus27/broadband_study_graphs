@@ -18,41 +18,37 @@
   color: white;
 }
 
-.Radio-col {
-  margin: auto;
+.Radio-col-container {
+  border: 3px solid #D4AF37;
+  display: flex;
+}
+.Radio-col-child-1 {
   text-align: left;
-  left: 0px;
-  width: 200px;
+  flex: 1;
   border: 3px solid red;
   padding: 10px;
   background-color: #282c34;
   font-size: calc(10px + 2vmin);
   color: #D4AF37;
 }
-
-/*
-.Radio-col-left {
-  float: left;
-  margin-right: 8px;
+.Radio-col-child-2 {
   text-align: left;
-  width: 200px;
+  flex-shrink:0;
   border: 3px solid red;
   padding: 10px;
   background-color: #282c34;
   font-size: calc(10px + 2vmin);
   color: #D4AF37;
 }
-
-.Radio-col-right {
-  margin-left: 108px;
+.Radio-col-child-3 {
   text-align: left;
-  width: 200px;
+  flex-shrink:0;
   border: 3px solid red;
+  padding: 10px;
   background-color: #282c34;
   font-size: calc(10px + 2vmin);
   color: #D4AF37;
 }
-*/
 
 .App-link {
   color: #61dafb;

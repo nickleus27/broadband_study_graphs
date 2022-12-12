@@ -49,6 +49,10 @@ function TestOptions() {
   }
 
   const radioOptions = (data, round, optionNum) => {
+    return <div class="Radio-col-container">{_radioOptions(data, round, optionNum)}</div>;
+  }
+
+  const _radioOptions = (data, round, optionNum) => {
     if (carrier === "") {
       return carrierOptions(data, round, optionNum);
     }
@@ -76,7 +80,7 @@ function TestOptions() {
     const testDataObject = data[round];
     const carrierList = Object.keys(testDataObject);
     return (
-      <div className='Radio-col'>Carriers:{carrierList.map(value => (
+      <div className='Radio-col-child-1'>Carriers:{carrierList.map(value => (
           <form>
             <label>
               <input
@@ -99,7 +103,7 @@ function TestOptions() {
     }
     const phoneModel_list = Object.keys(testDataObject[carrier]);
     return (
-      <div className='Radio-col'>Phone Models:{phoneModel_list.map(value => (
+      <div className='Radio-col-child-2'>Phone Models:{phoneModel_list.map(value => (
           <form>
             <label>
               <input
@@ -128,7 +132,7 @@ function TestOptions() {
     const serverList = Object.keys(testDataObject[carrier][phoneModel]);
     serverList.pop(); //get rid of total tests field
     return (
-      <div className='Radio-col'>Server Tests:{serverList.map(value => (
+      <div className='Radio-col-child-3'>Server Tests:{serverList.map(value => (
           <form>
             <label>
               <input
