@@ -3,7 +3,7 @@ import '../components/OptionItem.css';
 import OptionItem from '../components/OptionItem.js';
 import { useLocation } from 'react-router-dom';
 import { ResponsiveContainer, BarChart, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
-import { getCarrierModelServerGraph } from '../library/dataToGraph';
+import { getSpeedGraph, getErrorGraph } from '../library/dataToGraph';
 import CustomTooltip from '../components/CustomToolTip';
 
 function createButtons(props) {
@@ -32,7 +32,12 @@ function Graph() {
     const title = location.state.title;
     const stateData = location.state.data;
     const tests = stateData[title.rounds][title.carrier][title.phone_model][title.server];
-    var data = getCarrierModelServerGraph(tests);
+    var data;
+    if (title.tests === "speeds") {
+        data = getSpeedGraph(tests);
+    } else {
+        data = getErrorGraph(tests);
+    }
     return (
         <div className="App">
             <header className="App-header">

@@ -81,17 +81,17 @@ function TestOptions() {
     const carrierList = Object.keys(testDataObject);
     return (
       <div className='Radio-col-child-1'>Carriers:{carrierList.map(value => (
-          <form>
-            <label>
-              <input
-                type="radio"
-                name={`Radio-Carrier-${optionNum}`}
-                value={value}
-                checked={carrier === value}
-                onChange={onChangedCarrier}
-              />{value}</label>
-          </form>
-        ))}</div>
+        <form>
+          <label>
+            <input
+              type="radio"
+              name={`Radio-Carrier-${optionNum}`}
+              value={value}
+              checked={carrier === value}
+              onChange={onChangedCarrier}
+            />{value}</label>
+        </form>
+      ))}</div>
     );
   }
 
@@ -104,23 +104,23 @@ function TestOptions() {
     const phoneModel_list = Object.keys(testDataObject[carrier]);
     return (
       <div className='Radio-col-child-2'>Phone Models:{phoneModel_list.map(value => (
-          <form>
-            <label>
-              <input
-                type="radio"
-                name={`Radio-Phone-${optionNum}`}
-                value={value}
-                checked={phone_model === value}
-                onChange={onChangedPhoneModel}
-              />{value}</label>
-          </form>
-        ))}</div>
+        <form>
+          <label>
+            <input
+              type="radio"
+              name={`Radio-Phone-${optionNum}`}
+              value={value}
+              checked={phone_model === value}
+              onChange={onChangedPhoneModel}
+            />{value}</label>
+        </form>
+      ))}</div>
     );
   }
 
   const serverOptions = (data, round, carrier, phoneModel, optionNum) => {
     const testDataObject = data[round];
-    if (carrier === "" ) {
+    if (carrier === "") {
       setPhoneModel("");
       return null;
     }
@@ -133,23 +133,24 @@ function TestOptions() {
     serverList.pop(); //get rid of total tests field
     return (
       <div className='Radio-col-child-3'>Server Tests:{serverList.map(value => (
-          <form>
-            <label>
-              <input
-                type="radio"
-                name={`Radio-Server-${optionNum}`}
-                value={value}
-                checked={server === value}
-                onChange={onChangedServer}
-              />{value}</label>
-          </form>
-        ))}</div>
+        <form>
+          <label>
+            <input
+              type="radio"
+              name={`Radio-Server-${optionNum}`}
+              value={value}
+              checked={server === value}
+              onChange={onChangedServer}
+            />{value}</label>
+        </form>
+      ))}</div>
     );
   }
 
   const createButton = (data, round, carrier, phoneModel, server, optionNum) => {
     var buttonData = {};
-    var description;
+    var descriptionSpeeds;
+    var descriptionErrors;
     buttonData.route = "/graph";
     buttonData.data = data;
     buttonData.title = {};
@@ -157,25 +158,47 @@ function TestOptions() {
     buttonData.title.carrier = carrier;
     buttonData.title.phone_model = phoneModel;
     buttonData.title.server = server;
+    buttonData.title.tests = "speeds";
     if (server.includes("up")) {
-      description = "Upload speeds from ";
+      descriptionSpeeds = "Upload speeds from ";
+      descriptionErrors = "Upload errors from "
     } else {
-      description = "Download speeds from ";
+      descriptionSpeeds = "Download speeds from ";
+      descriptionErrors = "Download errors from ";
     }
     if (server.includes("wTCP")) {
-      description += "West Server";
+      descriptionSpeeds += "West Server";
+      descriptionErrors += "West Server";
     } else {
-      description += "East Server";
+      descriptionSpeeds += "East Server";
+      descriptionErrors += "East Server";
     }
-    buttonData.title.description = description;
+    buttonData.title.description = descriptionSpeeds;
+
+    var buttonDataErrors = {};
+    var titleErrors = structuredClone(buttonData.title);
+    buttonDataErrors.data = data;
+    buttonDataErrors.route = "/graph";
+    buttonDataErrors.title = titleErrors;
+    buttonDataErrors.title.tests = "errors";
+    buttonDataErrors.title.description = descriptionErrors;
     return (
-      <OptionItem
-        key={server}
-        name={server}
-        description={description}
-        data={buttonData}
-        choice={"Go To Graph"}>
-      </OptionItem>);
+      <div>
+        <OptionItem
+          key={server}
+          name={server}
+          description={descriptionSpeeds}
+          data={buttonData}
+          choice={"Go To Graph"}>
+        </OptionItem>
+        <OptionItem
+          key={server}
+          name={server}
+          description={descriptionErrors}
+          data={buttonDataErrors}
+          choice={"Go To Graph"}>
+        </OptionItem>
+      </div>);
   }
 
   return (
