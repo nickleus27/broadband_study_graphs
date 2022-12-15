@@ -49,7 +49,7 @@ function TestOptions() {
   }
 
   const radioOptions = (data, round, optionNum) => {
-    return <div class="Radio-col-container">{_radioOptions(data, round, optionNum)}</div>;
+    return <div className="Radio-col-container">{_radioOptions(data, round, optionNum)}</div>;
   }
 
   const _radioOptions = (data, round, optionNum) => {
@@ -80,8 +80,8 @@ function TestOptions() {
     const testDataObject = data[round];
     const carrierList = Object.keys(testDataObject);
     return (
-      <div className='Radio-col-child-1'>Carriers:{carrierList.map(value => (
-        <form>
+      <div key='Radio-col-child-1' className='Radio-col-child-1'>Carriers:{carrierList.map(value => (
+        <form key={value}>
           <label>
             <input
               type="radio"
@@ -103,8 +103,8 @@ function TestOptions() {
     }
     const phoneModel_list = Object.keys(testDataObject[carrier]);
     return (
-      <div className='Radio-col-child-2'>Phone Models:{phoneModel_list.map(value => (
-        <form>
+      <div key='Radio-col-child-2' className='Radio-col-child-2'>Phone Models:{phoneModel_list.map(value => (
+        <form key={value}>
           <label>
             <input
               type="radio"
@@ -132,8 +132,8 @@ function TestOptions() {
     const serverList = Object.keys(testDataObject[carrier][phoneModel]);
     serverList.pop(); //get rid of total tests field
     return (
-      <div className='Radio-col-child-3'>Server Tests:{serverList.map(value => (
-        <form>
+      <div key='Radio-col-child-3' className='Radio-col-child-3'>Server Tests:{serverList.map(value => (
+        <form key={value}>
           <label>
             <input
               type="radio"
@@ -183,16 +183,16 @@ function TestOptions() {
     buttonDataErrors.title.tests = "errors";
     buttonDataErrors.title.description = descriptionErrors;
     return (
-      <div>
+      <div key="goto-buttons">
         <OptionItem
-          key={server}
+          key={`speeds-${server}`}
           name={server}
           description={descriptionSpeeds}
           data={buttonData}
           choice={"Go To Graph"}>
         </OptionItem>
         <OptionItem
-          key={server}
+          key={`errors-${server}`}
           name={server}
           description={descriptionErrors}
           data={buttonDataErrors}

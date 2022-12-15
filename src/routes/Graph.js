@@ -1,11 +1,12 @@
 import '../App.css';
 import '../components/OptionItem.css';
-import OptionItem from '../components/OptionItem.js';
+//import OptionItem from '../components/OptionItem.js';
 import { useLocation } from 'react-router-dom';
 import { ResponsiveContainer, BarChart, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
 import { getSpeedGraph, getErrorGraph } from '../library/dataToGraph';
 import CustomTooltip from '../components/CustomToolTip';
 
+/*
 function createButtons(props) {
     var buttons = [];
     for (const carrier of Object.keys(props.data[props.title.rounds])) {
@@ -25,6 +26,7 @@ function createButtons(props) {
     }
     return buttons;
 }
+*/
 
 
 function Graph() {
@@ -59,10 +61,6 @@ function Graph() {
                         </BarChart>
                     </ResponsiveContainer>
                 </div>
-                {/*
-                Choose another test to compare:
-                {createButtons(location.state)}
-                    */}
             </header>
         </div>
     );
