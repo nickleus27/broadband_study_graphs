@@ -132,18 +132,22 @@ function TestOptions() {
     const serverList = Object.keys(testDataObject[carrier][phoneModel]);
     serverList.pop(); //get rid of total tests field
     return (
-      <div key='Radio-col-child-3' className='Radio-col-child-3'>Server Tests:{serverList.map(value => (
-        <form key={value}>
-          <label>
-            <input
-              type="radio"
-              name={`Radio-Server-${optionNum}`}
-              value={value}
-              checked={server === value}
-              onChange={onChangedServer}
-            />{value}</label>
-        </form>
-      ))}</div>
+      <div key='Radio-col-child-3' className='Radio-col-child-3'>Server Tests:{
+        serverList.reduce(function (result, value) {
+          if (value[value.length - 1] === '1') {
+            result.push(<form key={value}>
+              <label>
+                <input
+                  type="radio"
+                  name={`Radio-Server-${optionNum}`}
+                  value={value}
+                  checked={server === value}
+                  onChange={onChangedServer}
+                />{value}</label>
+            </form>);
+          }
+          return result;
+        }, [])}</div>
     );
   }
 
