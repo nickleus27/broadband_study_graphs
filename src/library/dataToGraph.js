@@ -10,6 +10,10 @@
  * @returns an array of graph data objects with keys: name, value, and totalTests
  */
 
+/**
+ * Todo: Set up function for rendering graph optionNum 2 with side by side bar graphs.
+ */
+
 function getSpeedGraph(testData) {
     var graph = [];
     const speeds = new Set(["200M+", "100M-200M", "50M-100M", "10M-50M", "0M-10M"]);

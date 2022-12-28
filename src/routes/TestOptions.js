@@ -5,6 +5,10 @@ import logo from '../calspeed.png';
 import '../components/OptionItem.css';
 import OptionItem from '../components/OptionItem.js';
 
+/**
+ * TODO: set up graph comparison buttons
+ */
+
 function TestOptions() {
   const location = useLocation();
   const [carrier, setCarrier] = useState("");
@@ -167,13 +171,13 @@ function TestOptions() {
     var descriptionErrors;
     buttonData.route = "/graph";
     buttonData.data = data;
-    buttonData.title = {};
-    buttonData.title.rounds = round;
-    buttonData.title.carrier = selCarrier;
-    buttonData.title.phone_model = selPhoneModel;
-    buttonData.title.server = selServer;
-    buttonData.title.optionNum = optionNum;
-    buttonData.title.tests = "speeds";
+    buttonData.metadata = {};
+    buttonData.metadata.rounds = round;
+    buttonData.metadata.carrier = selCarrier;
+    buttonData.metadata.phone_model = selPhoneModel;
+    buttonData.metadata.server = selServer;
+    buttonData.metadata.optionNum = optionNum;
+    buttonData.metadata.tests = "speeds";
     if (optionNum === '1') {
       if (server.includes("up")) {
         descriptionSpeeds = "Upload speeds from ";
@@ -203,15 +207,18 @@ function TestOptions() {
       descriptionSpeeds += "from Graph 1";
       descriptionErrors += "from Graph 1";
     }
-    buttonData.title.description = descriptionSpeeds;
+    buttonData.metadata.description = descriptionSpeeds;
 
     var buttonDataErrors = {};
-    var titleErrors = structuredClone(buttonData.title);
+    var metaDataErrors = structuredClone(buttonData.metadata);
     buttonDataErrors.data = data;
     buttonDataErrors.route = "/graph";
-    buttonDataErrors.title = titleErrors;
-    buttonDataErrors.title.tests = "errors";
-    buttonDataErrors.title.description = descriptionErrors;
+    buttonDataErrors.metadata = metaDataErrors;
+    buttonDataErrors.metadata.tests = "errors";
+    buttonDataErrors.metadata.description = descriptionErrors;
+
+    /* add in data from graph 1 if this is option number 2 */
+
     return (
       <div key="goto-buttons">
         <OptionItem
@@ -231,12 +238,12 @@ function TestOptions() {
       </div>);
   }
 
-  const option1 = radioOptions(location.state.data, location.state.title.rounds, '1');
-  const option2 = radioOptions(location.state.data, location.state.title.rounds, '2');
+  const option1 = radioOptions(location.state.data, location.state.metadata.rounds, '1');
+  const option2 = radioOptions(location.state.data, location.state.metadata.rounds, '2');
   return (
     <div className="App">
       <header className="App-header">
-        <h2>California Broadband {location.state.title.rounds} Test Options</h2>
+        <h2>California Broadband {location.state.metadata.rounds} Test Options</h2>
         <img src={logo} className="App-logo" alt="logo" />
         <div>Graph 1 Options:</div>
         {option1}

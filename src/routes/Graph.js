@@ -6,36 +6,13 @@ import { ResponsiveContainer, BarChart, XAxis, YAxis, Tooltip, Legend, Bar } fro
 import { getSpeedGraph, getErrorGraph } from '../library/dataToGraph';
 import CustomTooltip from '../components/CustomToolTip';
 
-/*
-function createButtons(props) {
-    var buttons = [];
-    for (const carrier of Object.keys(props.data[props.title.rounds])) {
-        let buttonData = {};
-        buttonData.route = "/carriers";
-        buttonData.data = props.data;
-        buttonData.title = Object.assign({}, props.title);
-        buttonData.title.carrier = carrier;
-        buttons.push(
-            <OptionItem
-                key={carrier}
-                name={carrier}
-                description={"Broadband testing for " + carrier}
-                data={buttonData}
-                choice={"Go To " + carrier}>
-            </OptionItem>);
-    }
-    return buttons;
-}
-*/
-
-
 function Graph() {
     const location = useLocation();
-    const title = location.state.title;
+    const metadata = location.state.metadata;
     const stateData = location.state.data;
-    const tests = stateData[title.rounds][title.carrier][title.phone_model][title.server];
+    const tests = stateData[metadata.rounds][metadata.carrier][metadata.phone_model][metadata.server];
     var data;
-    if (title.tests === "speeds") {
+    if (metadata.tests === "speeds") {
         data = getSpeedGraph(tests);
     } else {
         data = getErrorGraph(tests);
@@ -43,8 +20,8 @@ function Graph() {
     return (
         <div className="App">
             <header className="App-header">
-                <h2>Graph For {title.carrier} phone model {title.phone_model}</h2>
-                <div>{title.description}</div>
+                <h2>Graph For {metadata.carrier} phone model {metadata.phone_model}</h2>
+                <div>{metadata.description}</div>
                 <div style={{ width: '100%', height: 750 }}>
                     <ResponsiveContainer width="95%" height="80%">
                         <BarChart data={data} margin={{

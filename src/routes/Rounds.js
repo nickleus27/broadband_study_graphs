@@ -12,7 +12,7 @@ function createButtons() {
     var buttonData = {};
     buttonData.route = "/test_options";
     buttonData.data = graphData;//[rounds];
-    buttonData.title = {rounds};
+    buttonData.metadata = {rounds};
     buttons.push(
       <OptionItem key={rounds}
         name={rounds}
