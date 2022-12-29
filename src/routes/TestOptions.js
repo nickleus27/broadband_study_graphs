@@ -17,6 +17,7 @@ function TestOptions() {
   const [phone_model2, setPhoneModel2] = useState("");
   const [server, setServer] = useState("");
   const [server2, setServer2] = useState("");
+  const graph1_metaData = [];
 
   const onChangedCarrier = (event) => {
     setCarrier(event.target.value);
@@ -204,8 +205,8 @@ function TestOptions() {
         descriptionErrors += "East Server";
       }
     } else if (optionNum === '2') {
-      descriptionSpeeds += "from Graph 1";
-      descriptionErrors += "from Graph 1";
+      descriptionSpeeds += "Graph 1";
+      descriptionErrors += "Graph 1";
     }
     buttonData.metadata.description = descriptionSpeeds;
 
@@ -217,7 +218,16 @@ function TestOptions() {
     buttonDataErrors.metadata.tests = "errors";
     buttonDataErrors.metadata.description = descriptionErrors;
 
+    /* if graph1 push button metadata to global stack for access for graph2 */
+    if (optionNum === '1') {
+      graph1_metaData.push(buttonData.metadata);
+      graph1_metaData.push(buttonDataErrors.metadata);
+    }
     /* add in data from graph 1 if this is option number 2 */
+    if (optionNum === '2') {
+      buttonDataErrors.metadata.graph1 = graph1_metaData.pop();
+      buttonData.metadata.graph1 = graph1_metaData.pop();
+    }
 
     return (
       <div key="goto-buttons">
