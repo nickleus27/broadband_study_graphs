@@ -180,24 +180,24 @@ function TestOptions() {
     buttonData.metadata.optionNum = optionNum;
     buttonData.metadata.tests = "speeds";
     if (optionNum === '1') {
-      if (server.includes("up")) {
-        descriptionSpeeds = "Upload speeds from ";
-        descriptionErrors = "Upload errors from "
+      if (selServer.includes("up")) {
+        descriptionSpeeds = "Graph1 upload speeds from ";
+        descriptionErrors = "Graph1 upload errors from "
       } else {
-        descriptionSpeeds = "Download speeds from ";
-        descriptionErrors = "Download errors from ";
+        descriptionSpeeds = "Graph1 download speeds from ";
+        descriptionErrors = "Graph1 download errors from ";
       }
     } else if (optionNum === '2') {
-      if (server.includes("up")) {
-        descriptionSpeeds = "Compare upload speeds from ";
-        descriptionErrors = "Compare upload errors from "
+      if (selServer.includes("up")) {
+        descriptionSpeeds = graph1_metaData[0].description + " and Graph2 upload speeds from ";
+        descriptionErrors = graph1_metaData[1].description + " and Graph2 upload errors from "
       } else {
-        descriptionSpeeds = "Compare download speeds from ";
-        descriptionErrors = "Compare download errors from ";
+        descriptionSpeeds = graph1_metaData[0].description + " and Graph2 download speeds from ";
+        descriptionErrors = graph1_metaData[1].description + " and Graph2 download errors from ";
       }
     }
     if (optionNum === '1') {
-      if (server.includes("wTCP")) {
+      if (selServer.includes("wTCP")) {
         descriptionSpeeds += "West Server";
         descriptionErrors += "West Server";
       } else {
@@ -205,8 +205,13 @@ function TestOptions() {
         descriptionErrors += "East Server";
       }
     } else if (optionNum === '2') {
-      descriptionSpeeds += "Graph 1";
-      descriptionErrors += "Graph 1";
+      if (selServer.includes("wTCP")) {
+        descriptionSpeeds += "West Server";
+        descriptionErrors += "West Server";
+      } else {
+        descriptionSpeeds += "East Server";
+        descriptionErrors += "East Server";
+      }
     }
     buttonData.metadata.description = descriptionSpeeds;
 

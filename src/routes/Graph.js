@@ -14,11 +14,13 @@ function Graph() {
     const tests = stateData[metadata.rounds][metadata.carrier][metadata.phone_model][metadata.server];
     var data;
     var renderGraph;
+    var renderTitle;
+    var metadata2;
     if (metadata.tests === "speeds") {
         if (metadata.optionNum === '1') {
             data = getSpeedGraph(tests);
         } else {
-            const metadata2 = metadata.graph1;
+            metadata2 = metadata.graph1;
             const tests2 = stateData[metadata2.rounds][metadata2.carrier][metadata2.phone_model][metadata2.server];
             /* use tests2 as first arg becaust metadata2 actually holds test1 from selection screen */
             data = getSpeedGraph2(tests2, tests);
@@ -27,7 +29,7 @@ function Graph() {
         if (metadata.optionNum === '1') {
             data = getErrorGraph(tests);
         } else {
-            const metadata2 = metadata.graph1;
+            metadata2 = metadata.graph1;
             const tests2 = stateData[metadata2.rounds][metadata2.carrier][metadata2.phone_model][metadata2.server];
             /* use tests2 as first arg becaust metadata2 actually holds test1 from selection screen */
             data = getErrorGraph2(tests2, tests);
@@ -70,16 +72,34 @@ function Graph() {
             </ResponsiveContainer>
         </div>);
     }
+    const header1 = () => {
+        return (
+            <div>
+                <h2>Graph For {metadata.carrier} phone model {metadata.phone_model}</h2>
+                <div>{metadata.description}</div>
+            </div>
+        );
+    }
+    const header2 = () => {
+        return (
+            <div>
+            <h3>Graph1: {metadata.carrier} phone model {metadata.phone_model}</h3>
+            <h3>Graph2: {metadata2.carrier} phone model {metadata2.phone_model}</h3>
+            <div>{metadata.description}</div>
+        </div>
+        )
+    }
     if (metadata.optionNum === '1') {
+        renderTitle = header1();
         renderGraph = graph1();
     } else if (metadata.optionNum === '2') {
+        renderTitle = header2();
         renderGraph = graph2();
     }
     return (
         <div className="App">
             <header className="App-header">
-                <h2>Graph For {metadata.carrier} phone model {metadata.phone_model}</h2>
-                <div>{metadata.description}</div>
+                {renderTitle}
                 {renderGraph}
             </header>
         </div>
