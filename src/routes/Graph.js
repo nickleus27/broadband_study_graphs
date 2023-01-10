@@ -44,7 +44,7 @@ function Graph() {
                     left: 21,
                     bottom: 11,
                 }}>
-                    <XAxis dataKey="name" interval={0} angle={-11} textAnchor="end" />
+                    <XAxis dataKey="name" interval={0} angle={0} textAnchor="middle" />
                     <YAxis />
                     <Tooltip content={CustomTooltip} />
                     <Legend />
@@ -62,7 +62,7 @@ function Graph() {
                     left: 21,
                     bottom: 11,
                 }}>
-                    <XAxis dataKey="name" interval={0} angle={-11} textAnchor="end" />
+                    <XAxis dataKey="name" interval={0} angle={0} textAnchor="middle" />
                     <YAxis />
                     <Tooltip content={CustomTooltip2} />
                     <Legend />
